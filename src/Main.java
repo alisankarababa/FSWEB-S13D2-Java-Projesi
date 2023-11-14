@@ -8,6 +8,11 @@ public class Main {
 
         System.out.println("-----------------------------------------------");
 
+        System.out.println("numberToWords  Tests");
+        System.out.println(numberToWords(123)); //"One Two Three"
+        System.out.println(numberToWords(1010)); //"One Zero One Zero"
+        System.out.println(numberToWords(-12)); //"Invalid Value"
+        System.out.println("-----------------------------------------------");
     }
 
     public static boolean isPalindrome(int num) {
@@ -21,5 +26,24 @@ public class Main {
         }
 
         return true;
+    }
+
+    public static String numberToWords(int num) {
+
+        if ( num < 0 )
+            return "Invalid Value";
+
+        String[] wordsForNumbers = {"Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven",
+        "Eight", "Nine"};
+
+        char[] arrCharNum = Integer.toString(num).toCharArray();
+        StringBuilder retVal = new StringBuilder();
+
+        for ( char ch : arrCharNum ) {
+            int idx = Character.getNumericValue(ch);
+            retVal.append(" ").append(wordsForNumbers[idx]);
+        }
+
+        return retVal.toString().trim();
     }
 }
