@@ -13,6 +13,13 @@ public class Main {
         System.out.println(numberToWords(1010)); //"One Zero One Zero"
         System.out.println(numberToWords(-12)); //"Invalid Value"
         System.out.println("-----------------------------------------------");
+
+        System.out.println("isPerfectNumber Tests");
+        System.out.println(isPerfectNumber(6)); //true
+        System.out.println(isPerfectNumber(28)); //true
+        System.out.println(isPerfectNumber(5)); //false
+        System.out.println(isPerfectNumber(-1)); // false
+        System.out.println("-----------------------------------------------");
     }
 
     public static boolean isPalindrome(int num) {
@@ -45,5 +52,23 @@ public class Main {
         }
 
         return retVal.toString().trim();
+    }
+
+    public static boolean isPerfectNumber(int num) {
+
+        if ( num < 0 )
+            return false;
+
+        int sum = 0;
+        for ( int i = 1; i <= num / 2; ++i) {
+
+            if ( num % i == 0) {
+                sum += i;
+                if(sum > num)
+                    return false;
+            }
+        }
+
+        return sum == num;
     }
 }
